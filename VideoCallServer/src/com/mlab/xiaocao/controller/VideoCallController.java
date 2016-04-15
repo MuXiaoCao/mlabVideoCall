@@ -2,24 +2,47 @@ package com.mlab.xiaocao.controller;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
+import java.util.TreeMap;
+
+import javassist.expr.NewArray;
 
 import javax.annotation.Resource;
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.context.ServletConfigAware;
 
+import com.mlab.xiaocao.service.VideoCallService;
 import com.mlab.xiaocao.service.time.TimeService;
 import com.mlab.xiaocao.util.DataUtil;
 
 @Controller
-public class VideoCallController {
+public class VideoCallController implements ServletConfigAware{
+	
 	@Resource(name="dataUtil")
 	private DataUtil Util;
 	@Resource(name="timeService")
 	private TimeService timeService;
+	@Resource(name="videoService")
+	private VideoCallService videoCallService;
+	
+	private ServletContext context;
+
+	public void setServletContext(ServletContext servletContext) {
+		this.context = servletContext;
+	}
+	public void setServletConfig(ServletConfig config) {
+		context = config.getServletContext();
+		context.setAttribute(Util.VIDEOCALL_LIST, new ArrayList<String>());
+		context.setAttribute(Util.BYVIDEOCALL_LIST, new ArrayList<String>());
+	}
+	
+	
 	private PrintWriter out;
 	
 	/**
@@ -40,8 +63,11 @@ public class VideoCallController {
 	@RequestMapping(value="/initVideoCall") 
 	public String initVideoCall(HttpServletRequest request,HttpServletResponse response) {
 		
+		ServletContext servletContext = request.getServletContext();
+		
 		String userID = request.getParameter(Util.USER_ID);
 		String targetID = request.getParameter(Util.TARGET_ID);
+		
 		
 		
 		return null;

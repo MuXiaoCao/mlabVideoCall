@@ -12,9 +12,8 @@ public class TimeService {
 	
 	@Resource(name="dataUtil")
 	public DataUtil Util;
-	
-	public JSONObject getTime() {
-		
-		return new JSONObject().put(Util.COMPARE_TIME, System.currentTimeMillis());
+
+	public String getTime() {
+		return System.currentTimeMillis() + "";
 	}
 }

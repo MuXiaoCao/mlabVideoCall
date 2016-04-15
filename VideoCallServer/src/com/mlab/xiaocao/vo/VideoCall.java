@@ -13,6 +13,35 @@ public class VideoCall {
 		targetUser = new User(targetUserID);
 	}
 	
+	
+	
+	public User getSrcUser() {
+		return srcUser;
+	}
+
+
+
+	public void setSrcUser(User srcUser) {
+		this.srcUser = srcUser;
+	}
+
+
+
+	public User getTargetUser() {
+		return targetUser;
+	}
+
+
+
+	public void setTargetUser(User targetUser) {
+		this.targetUser = targetUser;
+	}
+
+
+	/*=======================Ö÷Òª¼ÆËãÂß¼­=======================*/
+	
+	
+	
 	class User {
 		
 		public User(String id) {

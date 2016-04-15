@@ -118,5 +118,8 @@
 		<property name="USER_ID" value="userID"/>
 		<!-- 视频通话接收id -->
 		<property name="TARGET_ID" value="targetID"/>
+		<!-- 存放所有在线通话记录 -->
+		<property name="VIDEOCALL_LIST" value="videoCallList"/>
+		<property name="BYVIDEOCALL_LIST" value="byvideoCallList"/>
 	</bean>
 </beans>

@@ -1,5 +1,7 @@
 package com.mlab.xiaocao.util;
 
+import java.util.UUID;
+
 
 /**
  * 
@@ -7,6 +9,16 @@ package com.mlab.xiaocao.util;
  *
  */
 public class DataUtil {
+	
+	/**
+	 * 返回8位UUID码
+	 * @return
+	 */
+	public static int GetUUID() {
+		UUID uuid = UUID.randomUUID();
+		return (int)(uuid.getLeastSignificantBits()%100000000);
+	}
+	
 	/*=============KEY================*/
 	// 服务器时间
 	public String COMPARE_TIME;
@@ -16,7 +28,26 @@ public class DataUtil {
 	public String USER_ID;
 	// 视频通话接收id
 	public String TARGET_ID;
+	// 在线所有通话记录
+	public String VIDEOCALL_LIST;
+	public String BYVIDEOCALL_LIST;
 	
+	public String getBYVIDEOCALL_LIST() {
+		return BYVIDEOCALL_LIST;
+	}
+
+	public void setBYVIDEOCALL_LIST(String bYVIDEOCALL_LIST) {
+		BYVIDEOCALL_LIST = bYVIDEOCALL_LIST;
+	}
+
+	public String getVIDEOCALL_LIST() {
+		return VIDEOCALL_LIST;
+	}
+
+	public void setVIDEOCALL_LIST(String vIDEOCALL_LIST) {
+		VIDEOCALL_LIST = vIDEOCALL_LIST;
+	}
+
 	public DataUtil() {
 	}
 
