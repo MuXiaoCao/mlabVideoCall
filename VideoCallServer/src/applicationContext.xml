@@ -121,5 +121,11 @@
 		<!-- 存放所有在线通话记录 -->
 		<property name="VIDEOCALL_LIST" value="videoCallList"/>
 		<property name="BYVIDEOCALL_LIST" value="byvideoCallList"/>
+		<!-- 服务器反馈给用户的key -->
+		<property name="JMS_KEY_USER" value="userjmskey"/>
+		<!-- ClientMessage KEY -->
+		<property name="DATA_TYPE" value="dataType"/>
+		<property name="TIME_STAMP" value="timestamp"/>
+		<property name="JMS_KEY_USER" value="userjmskey"/> 
 	</bean>
 </beans>

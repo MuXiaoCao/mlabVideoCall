@@ -1,11 +1,29 @@
 package com.mlab.xiaocao.vo;
 
 public class ServerMessage {
+	/*
+	 * 消息id
+	 */
 	private String messageID;
+	/**
+	 * 音頻時延
+	 */
 	private double audioDelay;
+	/**
+	 * 音频抖动
+	 */
 	private double audioJitter;
+	/**
+	 * 交互时延
+	 */
 	private double reactionDelay;
+	/**
+	 * 音视频不同步次数
+	 */
 	private int novasynCount;
+	/**
+	 * 音视频不同步时延
+	 */
 	private double novasynDelay;
 	
 

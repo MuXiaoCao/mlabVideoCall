@@ -4,48 +4,45 @@ package com.mlab.xiaocao.vo;
 
 public class ClientBean {
 	
-
-	private String userID;
-	private String datastype;
-	private String messageID;
-	private long timestmp;
+	private int userID;
+	private int datatype;
+	private int messageID;
+	private long timestamp;
 	
 	
-	public ClientBean(String datastype, String userID, String messageID,
+	public ClientBean(int datatype, int userID, int messageID,
 			long timestmp) {
 		super();
-		this.datastype = datastype;
+		this.datatype = datatype;
 		this.userID = userID;
 		this.messageID = messageID;
-		this.timestmp = timestmp;
+		this.timestamp = timestmp;
 	}
 	public ClientBean() {
 	}
-	public String getDatastype() {
-		return datastype;
+	public int getDatastype() {
+		return datatype;
 	}
-	public void setDatastype(String datastype) {
-		this.datastype = datastype;
+	public void setDatastype(int datastype) {
+		this.datatype = datastype;
 	}
-	public String getUserID() {
+	public int getUserID() {
 		return userID;
 	}
-	public void setUserID(String userID) {
+	public void setUserID(int userID) {
 		this.userID = userID;
 	}
-	public String getMessageID() {
+	public int getMessageID() {
 		return messageID;
 	}
-	public void setMessageID(String messageID) {
+	public void setMessageID(int messageID) {
 		this.messageID = messageID;
 	}
 	public long getTimestmp() {
-		return timestmp;
+		return timestamp;
 	}
 	public void setTimestmp(long timestmp) {
-		this.timestmp = timestmp;
+		this.timestamp = timestmp;
 	}
-	
-	
 
 }
