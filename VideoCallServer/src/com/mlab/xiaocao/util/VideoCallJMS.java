@@ -88,9 +88,20 @@ public interface VideoCallJMS extends MessageListener{
 	 */
 	public abstract void closeJMS(MessageProducer producer,MessageConsumer consumer,Session session,Connection conn);
 
+	/**
+	 * 监听器回调函数
+	 * @author 木小草
+	 *
+	 */
 	public interface MessageCallBack {
 
 		public abstract void receiveMessage(Message message);
+		/**
+		 * 是否停止监听
+		 * true  表示停止   false 表示继续监听
+		 * @return
+		 */
+		public abstract boolean isStopReceiveMessage();
 		
 	}
 }

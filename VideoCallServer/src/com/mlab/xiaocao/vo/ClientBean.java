@@ -4,13 +4,13 @@ package com.mlab.xiaocao.vo;
 
 public class ClientBean {
 	
-	private int userID;
+	private String userID;
 	private int datatype;
 	private int messageID;
 	private long timestamp;
 	
 	
-	public ClientBean(int datatype, int userID, int messageID,
+	public ClientBean(int datatype, String userID, int messageID,
 			long timestmp) {
 		super();
 		this.datatype = datatype;
@@ -26,10 +26,10 @@ public class ClientBean {
 	public void setDatastype(int datastype) {
 		this.datatype = datastype;
 	}
-	public int getUserID() {
+	public String getUserID() {
 		return userID;
 	}
-	public void setUserID(int userID) {
+	public void setUserID(String userID) {
 		this.userID = userID;
 	}
 	public int getMessageID() {

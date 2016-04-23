@@ -91,7 +91,8 @@ public class VideoCallJMSImpl implements VideoCallJMS{
 		
 		
 	}
-
+	
+	
 	public boolean sendTextMessage(String context,boolean method,String destination) {
 		
 		boolean flag = false;
@@ -109,10 +110,7 @@ public class VideoCallJMSImpl implements VideoCallJMS{
 			flag = true;
 		} catch (JMSException e) {
 			e.printStackTrace();
-		} finally {
-			closeJMS(producer, consumer, session, conn);
-		}
-		
+		} 
 		return flag;
 	}
 
@@ -133,9 +131,7 @@ public class VideoCallJMSImpl implements VideoCallJMS{
 			return true;
 		} catch (JMSException e) {
 			e.printStackTrace();
-		} finally {
-			closeJMS(producer, consumer, session, conn);
-		}
+		} 
 		return false;
 	}
 	
@@ -167,9 +163,9 @@ public class VideoCallJMSImpl implements VideoCallJMS{
 			session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
 			conn.start();
 			if (method == true) {
-				producer = session.createProducer(session.createQueue(destination));
+				consumer = session.createConsumer(session.createQueue(destination));
 			}else {
-				producer = session.createProducer(session.createTopic(destination));
+				consumer = session.createConsumer(session.createTopic(destination));
 			}
 			msg = consumer.receive();
 			if (msg instanceof TextMessage) {
@@ -178,9 +174,7 @@ public class VideoCallJMSImpl implements VideoCallJMS{
 			
 		} catch (JMSException e) {
 			e.printStackTrace();
-		} finally {
-			closeJMS(producer, consumer, session, conn);
-		}
+		} 
 		
 		return text;
 	}
@@ -192,9 +186,9 @@ public class VideoCallJMSImpl implements VideoCallJMS{
 			session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
 			conn.start();
 			if (method == true) {
-				producer = session.createProducer(session.createQueue(destination));
+				consumer = session.createConsumer(session.createQueue(destination));
 			}else {
-				producer = session.createProducer(session.createTopic(destination));
+				consumer = session.createConsumer(session.createTopic(destination));
 			}
 			msg = consumer.receive();
 			if (msg instanceof MapMessage) {
@@ -203,9 +197,7 @@ public class VideoCallJMSImpl implements VideoCallJMS{
 			
 		} catch (JMSException e) {
 			e.printStackTrace();
-		} finally {
-			closeJMS(producer, consumer, session, conn);
-		}
+		} 
 		
 		return mapMessage;
 	}
@@ -219,9 +211,9 @@ public class VideoCallJMSImpl implements VideoCallJMS{
 			session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
 			conn.start();
 			if (method == true) {
-				producer = session.createProducer(session.createQueue(destination));
+				consumer = session.createConsumer(session.createQueue(destination));
 			}else {
-				producer = session.createProducer(session.createTopic(destination));
+				consumer = session.createConsumer(session.createTopic(destination));
 			}
 			msg = consumer.receive();
 			if (msg instanceof ObjectMessage) {
@@ -230,9 +222,7 @@ public class VideoCallJMSImpl implements VideoCallJMS{
 			
 		} catch (JMSException e) {
 			e.printStackTrace();
-		} finally {
-			closeJMS(producer, consumer, session, conn);
-		}
+		} 
 		
 		return message;
 	}
@@ -240,29 +230,38 @@ public class VideoCallJMSImpl implements VideoCallJMS{
 	
 	public void receiveMessageByListener(String destination,final MessageCallBack callBack) {
 		
+		while (!callBack.isStopReceiveMessage()) {
+			try {
+				conn = factory.createConnection();
+				session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
+				conn.start();
+				consumer = session.createConsumer(session.createQueue(destination));
+				VideoCallJMSImpl videoCallJMSImpl = new VideoCallJMSImpl(){
+					
+					@Override
+					public void onMessage(Message message) {
+						callBack.receiveMessage(message);
+					}
+					
+				};
+				consumer.setMessageListener(videoCallJMSImpl);
+			} catch (JMSException e) {
+				e.printStackTrace();
+			} 
+		}
+	}
+
+	public void stopListener(String name) {
 		try {
 			conn = factory.createConnection();
 			session = conn.createSession(false, Session.AUTO_ACKNOWLEDGE);
 			conn.start();
-			producer = session.createProducer(session.createQueue(destination));
-			VideoCallJMSImpl videoCallJMSImpl = new VideoCallJMSImpl(){
-
-				@Override
-				public void onMessage(Message message) {
-					callBack.receiveMessage(message);
-				}
-				
-			};
-			consumer.setMessageListener(videoCallJMSImpl);
-			
+			consumer = session.createConsumer(session.createQueue(name));
+			consumer.close();
 		} catch (JMSException e) {
 			e.printStackTrace();
-		} finally {
-			closeJMS(producer, consumer, session, conn);
-		}
-	
+		} 
 	}
-
 	public void closeJMS(MessageProducer producer, MessageConsumer consumer, Session session, Connection conn) {
 		
 			try {
@@ -283,6 +282,6 @@ public class VideoCallJMSImpl implements VideoCallJMS{
 			}
 		
 	}
-
+	
 	
 }

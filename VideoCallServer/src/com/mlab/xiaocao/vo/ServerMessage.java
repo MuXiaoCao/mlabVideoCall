@@ -4,7 +4,7 @@ public class ServerMessage {
 	/*
 	 * ÏûÏ¢id
 	 */
-	private String messageID;
+	private int messageID;
 	/**
 	 * Òôîl•rÑÓ
 	 */
@@ -29,13 +29,13 @@ public class ServerMessage {
 
 	public ServerMessage() {
 	}
-	public ServerMessage(String messageID) {
+	public ServerMessage(int messageID) {
 		this.messageID = messageID;
 	}
-	public String getMessageID() {
+	public int getMessageID() {
 		return messageID;
 	}
-	public void setMessageID(String messageID) {
+	public void setMessageID(int messageID) {
 		this.messageID = messageID;
 	}
 	public double getAudioDelay() {
@@ -68,8 +68,5 @@ public class ServerMessage {
 	public void setNovasynDelay(double novasynDelay) {
 		this.novasynDelay = novasynDelay;
 	}
-	
-	
-	
-	
+
 }

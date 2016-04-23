@@ -126,6 +126,6 @@
 		<!-- ClientMessage KEY -->
 		<property name="DATA_TYPE" value="dataType"/>
 		<property name="TIME_STAMP" value="timestamp"/>
-		<property name="JMS_KEY_USER" value="userjmskey"/> 
+		<property name="MESSAGE_ID" value="messageId"/>
 	</bean>
 </beans>

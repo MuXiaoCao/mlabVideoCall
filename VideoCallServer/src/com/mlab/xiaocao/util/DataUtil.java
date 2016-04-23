@@ -14,7 +14,7 @@ public class DataUtil {
 	 * 返回8位UUID码
 	 * @return
 	 */
-	public static int GetUUID() {
+	public int GetUUID() {
 		UUID uuid = UUID.randomUUID();
 		return (int)(uuid.getLeastSignificantBits()%100000000);
 	}
@@ -50,7 +50,7 @@ public class DataUtil {
 	/**
 	 * datastype
 	 */
-	public String DATAS_TYPE;
+	public String DATA_TYPE;
 	/**
 	 * messageID
 	 */
@@ -58,33 +58,17 @@ public class DataUtil {
 	/**
 	 * timestmp
 	 */
-	public String TIME_STMP;
+	public String TIME_STAMP;
 	
 	/*======数据类型=====*/
-	/**
-     * 数据类型
-     * 
-     * @author 小草
-     *
-     */
-    public enum DataType {
-    	//通过括号赋值,而且必须带有一个参构造器和一个属性跟方法，否则编译出错
-        //赋值必须都赋值或都不赋值，不能一部分赋值一部分不赋值；如果不赋值则不能写构造器，赋值编译也出错
-        MAN(1), WOMEN(2);
-        
-        private final int value;
-
-        //构造器默认也只能是private, 从而保证构造函数只能在内部使用
-        DataType(int value) {
-            this.value = value;
-        }
-        
-        public int getValue() {
-            return value;
-        }
-    }
-	
-	
+	public static final int SendVideoInfo = 1;
+	public static final int SendAudioInfo = 2;
+	public static final int ReceiveVideoInfo = 3;
+	public static final int ReceiveAudioInfo = 4;
+	/*
+	 * 超时最大毫秒数
+	 */
+	public static final int TIME_OUT = 60000;
 	
 	
 	public String getUSER_CLIENT_ID() {
@@ -95,12 +79,12 @@ public class DataUtil {
 		USER_CLIENT_ID = uSER_CLIENT_ID;
 	}
 
-	public String getDATAS_TYPE() {
-		return DATAS_TYPE;
+	public String getDATA_TYPE() {
+		return DATA_TYPE;
 	}
 
-	public void setDATAS_TYPE(String dATAS_TYPE) {
-		DATAS_TYPE = dATAS_TYPE;
+	public void setDATA_TYPE(String dATA_TYPE) {
+		DATA_TYPE = dATA_TYPE;
 	}
 
 	public String getMESSAGE_ID() {
@@ -111,12 +95,12 @@ public class DataUtil {
 		MESSAGE_ID = mESSAGE_ID;
 	}
 
-	public String getTIME_STMP() {
-		return TIME_STMP;
+	public String getTIME_SATMP() {
+		return TIME_STAMP;
 	}
 
-	public void setTIME_STMP(String tIME_STMP) {
-		TIME_STMP = tIME_STMP;
+	public void setTIME_STAMP(String tIME_STMP) {
+		TIME_STAMP = tIME_STMP;
 	}
 
 	public String getJMS_KEY_USER() {
