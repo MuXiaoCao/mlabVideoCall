@@ -62,8 +62,8 @@ public class DataUtil {
 	
 	/*======数据类型=====*/
 	public static final int SendVideoInfo = 1;
-	public static final int SendAudioInfo = 2;
-	public static final int ReceiveVideoInfo = 3;
+	public static final int SendAudioInfo = 3;
+	public static final int ReceiveVideoInfo = 2;
 	public static final int ReceiveAudioInfo = 4;
 	/*
 	 * 超时最大毫秒数
@@ -71,6 +71,35 @@ public class DataUtil {
 	public static final int TIME_OUT = 60000;
 	
 	
+	/*=============socket 参数==============*/
+	/*
+	 * videocall是否正在进行
+	 */
+	public static boolean VIDEOCALL_RUNNING = true;
+	public int PORT;
+	public int SEND_PORT;
+
+	
+	public int getSEND_PORT() {
+		return SEND_PORT;
+	}
+
+	public void setSEND_PORT(int sEND_PORT) {
+		SEND_PORT = sEND_PORT;
+	}
+
+	public String getTIME_STAMP() {
+		return TIME_STAMP;
+	}
+
+	public int getPORT() {
+		return PORT;
+	}
+
+	public void setPORT(int pORT) {
+		PORT = pORT;
+	}
+
 	public String getUSER_CLIENT_ID() {
 		return USER_CLIENT_ID;
 	}

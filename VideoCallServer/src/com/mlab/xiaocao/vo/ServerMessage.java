@@ -25,10 +25,26 @@ public class ServerMessage {
 	 * 音视频不同步时延
 	 */
 	private double novasynDelay;
-	
+	/**
+	 * 丢帧次数
+	 */
+	private int loss_frame_count;
 
 	public ServerMessage() {
+		
 	}
+	
+	
+	public int getLoss_frame_count() {
+		return loss_frame_count;
+	}
+
+
+	public void setLoss_frame_count(int loss_frame_count) {
+		this.loss_frame_count = loss_frame_count;
+	}
+
+
 	public ServerMessage(int messageID) {
 		this.messageID = messageID;
 	}
@@ -69,4 +85,13 @@ public class ServerMessage {
 		this.novasynDelay = novasynDelay;
 	}
 
+
+	@Override
+	public String toString() {
+		return "ServerMessage [messageID=" + messageID + ", audioDelay="
+				+ audioDelay + ", audioJitter=" + audioJitter
+				+ ", reactionDelay=" + reactionDelay + ", novasynCount="
+				+ novasynCount + ", novasynDelay=" + novasynDelay
+				+ ", loss_frame_count=" + loss_frame_count + "]";
+	}
 }

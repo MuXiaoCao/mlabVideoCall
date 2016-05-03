@@ -2,12 +2,20 @@ package com.mlab.xiaocao.service;
 
 import org.json.JSONObject;
 
+import com.mlab.xiaocao.vo.ClientBean;
+
 public interface VideoCallService {
-	public JSONObject initVideoCall(String srcID,String jmskey1,String targetID,String jmskey2);
+	public void initVideoCall(String srcID,String targetID);
 
 	public void startVideoCall(String targetID);
 	
-	public String findUserID(String userID);
+	public String findUserID(int userID);
 
-	public void stopVideoCall(String userID2, String userID1);
+	public void stopVideoCall(String userID2, String userID1, boolean b);
+	
+	public void addUserVideoCallData(ClientBean clientBean);
+
+	public JSONObject getUserVideoCallData(String userID);
+
+
 }
